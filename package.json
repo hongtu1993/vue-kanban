@@ -12,9 +12,9 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "jest -i",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
-    "patch-push": "npm version patch && npm publish --access public",
-    "minor-push": "npm version minor && npm publish --access public",
-    "major-push": "npm version major && npm publish --access public"
+    "patch-push": "yarn version --patch && yarn publish --access public",
+    "minor-push": "yarn version --minor && yarn publish --access public",
+    "major-push": "yarn version --major && yarn publish --access public"
   },
   "dependencies": {
     "dragula": "^3.7.2",

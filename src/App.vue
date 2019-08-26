@@ -6,10 +6,10 @@
         <a href="//codepen.io/ettrics/pen/QbPEeg">Codepen</a>
       </h4>
     </section>
-    <Kanban :stages="statuses" :blocks="blocks" @update-block="updateBlock">
-      <div v-for="stage in statuses" :slot="stage" :key="stage">
+    <Kanban :stages="statuses" :blocks="blocks" @update-block="updateBlock" status="status">
+      <div v-for="stage in statuses" :slot="stage['key']" :key="stage">
         <h2>
-          {{ stage }}
+          {{ stage['label'] }}
           <a>+</a>
         </h2>
       </div>
@@ -21,8 +21,8 @@
           {{ item.title }}
         </div>
       </div>
-      <div v-for="stage in statuses" :key="stage" :slot="`footer-${stage}`">
-          <a href="" @click.prevent="() => addBlock(stage)">+ Add new block</a>
+      <div v-for="stage in statuses" :key="stage" :slot="`footer-${stage.key}`">
+          <a href="" @click.prevent="() => addBlock(stage['key'])">+ Add new block</a>
       </div>
     </Kanban>
   </div>
@@ -40,7 +40,8 @@ export default {
   },
   data() {
     return {
-      statuses: ['on-hold', 'in-progress', 'needs-review', 'approved'],
+      statuses: [{ label: 'on-hold-label', key: 'on-hold' }, { label: 'in-progress-label', key: 'in-progress' }, { label: 'needs-review-label', key: 'needs-review' }, { label: 'approved-label', key: 'approved' }],
+      // statuses: ['start', 'on-hold', 'in-progress', 'needs-review', 'approved', 'end'],
       blocks: [],
     };
   },
@@ -48,7 +49,7 @@ export default {
     for (let i = 0; i <= 10; i += 1) {
       this.blocks.push({
         id: i,
-        status: this.statuses[Math.floor(Math.random() * 4)],
+        status: this.statuses[Math.floor(Math.random() * 4)].key,
         title: faker.company.bs(),
       });
     }
