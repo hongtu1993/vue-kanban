@@ -8,19 +8,19 @@
 
 Add vue-kanban to your project with npm
 ``` bash
-npm install vue-kanban 
+npm install vue-kanban-mao 
 ```
 
 ... or yarn
 ```bash
-yarn add vue-kanban
+yarn add vue-kanban-mao
 ```
 
 ### Basic Usage
 
 Install the plugin
 ```js
-import vueKanban from 'vue-kanban'
+import vueKanban from 'vue-kanban-mao'
 
 Vue.use(vueKanban)
 ```

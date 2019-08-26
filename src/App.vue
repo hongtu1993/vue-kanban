@@ -6,7 +6,7 @@
         <a href="//codepen.io/ettrics/pen/QbPEeg">Codepen</a>
       </h4>
     </section>
-    <Kanban :stages="statuses" :blocks="blocks" @update-block="updateBlock" status="status">
+    <Kanban :stages="statuses" :blocks="blocks" @update-block="updateBlock" status="status" label="label" key="key">
       <div v-for="stage in statuses" :slot="stage['key']" :key="stage">
         <h2>
           {{ stage['label'] }}
@@ -41,7 +41,6 @@ export default {
   data() {
     return {
       statuses: [{ label: 'on-hold-label', key: 'on-hold' }, { label: 'in-progress-label', key: 'in-progress' }, { label: 'needs-review-label', key: 'needs-review' }, { label: 'approved-label', key: 'approved' }],
-      // statuses: ['start', 'on-hold', 'in-progress', 'needs-review', 'approved', 'end'],
       blocks: [],
     };
   },
