@@ -1,6 +1,6 @@
 {
   "name": "vue-kanban-mao",
-  "version": "11.0.0",
+  "version": "11.0.1",
   "description": "Kanban for vue",
   "author": "Mao <hongtu1993@sina.cn>",
   "main": "src/plugin.js",
