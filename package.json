@@ -1,9 +1,10 @@
 {
   "name": "vue-kanban-mao",
   "version": "0.1",
-  "description": "A Vue.js project",
+  "description": "Kanban for vue",
   "author": "Mao <hongtu1993@sina.cn>",
   "main": "src/plugin.js",
+  "private": false,
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
@@ -113,5 +114,7 @@
       "<rootDir>/node_modules/jest-serializer-vue"
     ],
     "mapCoverage": true
-  }
+  },
+  "repository": "https://github.com/hongtu1993/vue-kanban.git",
+  "license": "MIT"
 }
