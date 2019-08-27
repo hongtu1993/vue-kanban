@@ -6,7 +6,7 @@
         <a href="//codepen.io/ettrics/pen/QbPEeg">Codepen</a>
       </h4>
     </section>
-    <Kanban :stages="statuses" :blocks="blocks" @update-block="updateBlock" status="status" label="label" keyValue="key">
+    <Kanban :stages="statuses" :blocks="blocks" @update-block="updateBlock" status="swimlanesId" label="label" keyValue="key">
       <div v-for="(stage,index) in statuses" :slot="stage['key']" :key="index">
         <h2>
           {{ stage['label'] }}
@@ -40,15 +40,17 @@ export default {
   },
   data() {
     return {
-      statuses: [{ label: 'on-hold-label', key: 'on-hold' }, { label: 'in-progress-label', key: 'in-progress' }, { label: 'needs-review-label', key: 'needs-review' }, { label: 'approved-label', key: 'approved' }],
+      statuses: [],
       blocks: [],
     };
   },
   mounted() {
+    const that = this;
+    that.statuses = [{ label: '未处理', key: '1164806480977997824' }, { label: '已关闭', key: '1165908645058457600' }];
     for (let i = 0; i <= 10; i += 1) {
       this.blocks.push({
         id: i,
-        status: this.statuses[Math.floor(Math.random() * 4)].key,
+        swimlanesId: this.statuses[Math.floor(Math.random() * 2)].key,
         title: faker.company.bs(),
       });
     }
@@ -56,12 +58,14 @@ export default {
 
   methods: {
     updateBlock: debounce((id, status) => {
+      // console.log('id', id);
+      // console.log('status', status);
       this.blocks.find(b => b.id === Number(id)).status = status;
     }, 500),
     addBlock: debounce((stage) => {
       this.blocks.push({
         id: this.blocks.length,
-        status: stage,
+        swimlanesId: stage,
         title: faker.company.bs(),
       });
     }, 500),
