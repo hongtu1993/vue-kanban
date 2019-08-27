@@ -1,4 +1,4 @@
-import Kanban from './components/Kanban.vue';
+import Kanban from './components/Kanban';
 
 export default {
   install(vue) {

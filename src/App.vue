@@ -55,10 +55,10 @@ export default {
   },
 
   methods: {
-    updateBlock: debounce(function (id, status) {
+    updateBlock: debounce((id, status) => {
       this.blocks.find(b => b.id === Number(id)).status = status;
     }, 500),
-    addBlock: debounce(function (stage) {
+    addBlock: debounce((stage) => {
       this.blocks.push({
         id: this.blocks.length,
         status: stage,
