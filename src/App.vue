@@ -6,8 +6,8 @@
         <a href="//codepen.io/ettrics/pen/QbPEeg">Codepen</a>
       </h4>
     </section>
-    <Kanban :stages="statuses" :blocks="blocks" @update-block="updateBlock" status="status" label="label" key="key">
-      <div v-for="stage in statuses" :slot="stage['key']" :key="stage">
+    <Kanban :stages="statuses" :blocks="blocks" @update-block="updateBlock" status="status" label="label" keyValue="key">
+      <div v-for="(stage,index) in statuses" :slot="stage['key']" :key="index">
         <h2>
           {{ stage['label'] }}
           <a>+</a>
@@ -21,7 +21,7 @@
           {{ item.title }}
         </div>
       </div>
-      <div v-for="stage in statuses" :key="stage" :slot="`footer-${stage.key}`">
+      <div v-for="(stage,index) in statuses" :key="index" :slot="`footer-${stage.key}`">
           <a href="" @click.prevent="() => addBlock(stage['key'])">+ Add new block</a>
       </div>
     </Kanban>

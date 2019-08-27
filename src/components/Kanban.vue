@@ -1,7 +1,7 @@
 <template>
   <div class="drag-container">
     <ul class="drag-list">
-      <li v-for="stage in stages" class="drag-column" :class="{['drag-column-' + stage[keyValue]]: true}" :key="stage">
+      <li v-for="(stage,index) in stages" class="drag-column" :class="{['drag-column-' + stage[keyValue]]: true}" :key="index">
         <span class="drag-column-header">
           <slot :name="stage[keyValue]">
             <h2>{{ stage[label] }}</h2>
