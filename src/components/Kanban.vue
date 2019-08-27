@@ -1,15 +1,15 @@
 <template>
   <div class="drag-container">
     <ul class="drag-list">
-      <li v-for="stage in stages" class="drag-column" :class="{['drag-column-' + stage[key]]: true}" :key="stage">
+      <li v-for="stage in stages" class="drag-column" :class="{['drag-column-' + stage[keyValue]]: true}" :key="stage">
         <span class="drag-column-header">
-          <slot :name="stage[key]">
+          <slot :name="stage[keyValue]">
             <h2>{{ stage[label] }}</h2>
           </slot>
         </span>
         <div class="drag-options"></div>
-        <ul class="drag-inner-list" ref="list" :data-status="stage[key]">
-          <li class="drag-item" v-for="block in getBlocks(stage[key])" :data-block-id="block.id" :key="block.id">
+        <ul class="drag-inner-list" ref="list" :data-status="stage[keyValue]">
+          <li class="drag-item" v-for="block in getBlocks(stage[keyValue])" :data-block-id="block.id" :key="block.id">
             <slot :name="block.id">
 <!--              <strong>{{ block.status }}</strong>-->
 <!--              <div>{{ block.id }}</div>-->
@@ -17,7 +17,7 @@
           </li>
         </ul>
         <div class="drag-column-footer">
-            <slot :name="`footer-${stage[key]}`"></slot>
+            <slot :name="`footer-${stage[keyValue]}`"></slot>
         </div>
       </li>
     </ul>
@@ -31,7 +31,7 @@
     name: 'KanbanBoard',
 
     props: {
-      key: {
+      keyValue: {
         type: String,
         default: 'key',
       },
